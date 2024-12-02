@@ -9,6 +9,8 @@ project(amr_map)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   nav_msgs
+  std_msgs
+  geometry_msgs
   roscpp
   rospy
 )
@@ -130,6 +132,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/amr_map_node.cpp)
 add_executable(map_pub_node src/map_pub_node.cpp)
+add_executable(costmap_cleaner src/costmap_cleaner.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -156,6 +159,9 @@ add_executable(map_pub_node src/map_pub_node.cpp)
 #   ${catkin_LIBRARIES}
 # )
 target_link_libraries(map_pub_node
+  ${catkin_LIBRARIES}
+)
+target_link_libraries(costmap_cleaner
   ${catkin_LIBRARIES}
 )
 
