@@ -132,7 +132,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/amr_map_node.cpp)
 add_executable(map_pub_node src/map_pub_node.cpp)
-add_executable(costmap_cleaner src/costmap_cleaner.cpp)
+add_executable(amr_costmap_cleaner src/amr_costmap_cleaner.cpp)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -161,7 +161,7 @@ add_executable(costmap_cleaner src/costmap_cleaner.cpp)
 target_link_libraries(map_pub_node
   ${catkin_LIBRARIES}
 )
-target_link_libraries(costmap_cleaner
+target_link_libraries(amr_costmap_cleaner
   ${catkin_LIBRARIES}
 )
 
