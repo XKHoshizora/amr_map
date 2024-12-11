@@ -8,11 +8,14 @@ project(amr_map)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  rospy
   nav_msgs
   std_msgs
   geometry_msgs
-  roscpp
-  rospy
+  move_base_msgs
+  sensor_msgs
+  tf2
 )
 
 ## System dependencies are found with CMake's conventions
@@ -107,7 +110,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES amr_map
-#  CATKIN_DEPENDS nav_msgs roscpp rospy
+  CATKIN_DEPENDS roscpp rospy std_msgs nav_msgs geometry_msgs move_base_msgs sensor_msgs tf2
 #  DEPENDS system_lib
 )
 
@@ -138,6 +141,7 @@ add_executable(amr_costmap_cleaner src/amr_costmap_cleaner.cpp)
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
 # add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(amr_costmap_cleaner ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
